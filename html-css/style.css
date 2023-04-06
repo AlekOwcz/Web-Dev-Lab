@@ -1,0 +1,47 @@
+li { 
+    list-style-type: square 
+}
+
+* { font-family: Tahoma }
+body { margin: 5em 10em 5em 10em }
+p { text-align: justify }
+
+#price {
+    color: red;
+    font-weight: bold;
+}
+
+.intro {
+    font-style: italic;
+}
+
+img {
+    border-style: solid;
+    border-color: blue;
+}
+
+img:hover {
+
+    border-color: red;
+}
+
+h1 + h2 {
+    letter-spacing: 5px;
+}
+
+td[colspan="2"] > p {
+    font-size: small;
+}
+
+p + p {
+    color: grey;
+}
+
+body {
+    background-image: url("background.png"); 
+    background-repeat: repeat-y;
+}
+
+h1 {
+    color: red;
+}
