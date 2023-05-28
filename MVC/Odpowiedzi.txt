@@ -1,0 +1,41 @@
+1. Do czego służą poszczególne warstwy architektury MVC i jak są połączone?
+ODP:
+Model - Odpowiada za logikę biznesową. Zarządzanie, dostarczanie i walidację danych. Komunikuje się z bazą danych.
+
+View - Odpowiada za prezentację interfejsu użytkownika.
+
+Controller - Odpowiada za obsługę żądań. Jest pośrednikiem w komunikacji z Modelem i Widokiem.
+
+Połączenie: Kontroler obsługuje żądania, wysyła żądania danych do Modelu, przekazuje dane do wyświetlenia do View. Model i View nie są połączone, komunikacja za posrednictwem Kontrolera.
+================================
+2. Jakie są konwencję nazewnictwa dla: (i) modeli, (ii) kontrolerów, (iii) akcji kontrolera, (iv)
+widoków, (v) folderów widoków?
+ODP:
+  (i) Modele nazywane są adekwatnie do reprezentowanych przez nie encji danych(User, Person, Order itp.)
+ (ii) Kontrolery zwykle mają nazwy w formacie EncjaController (UserController, PersonController, OrderController itp.)
+(iii) Nazwy akcji zwykle odpowiadają wykonywanym przez nie zadaniom. Na przykład operacje CRUD.
+ (iv) Widoki zwykle nazwyają się jak akcje kontrolera, którym odpowiadają.
+  (v) Folder widoków zwykle odpowiada nazwie kontrolera, którego metodom odpowiadają zawarte w nim widoki.
+================================
+3. Jak dane przekazywane są z kontrolerów do widoków (podaj 2 opcje)?
+ODP:
+1) Kontroler odczytuje dane z URL i zapakowuje w słownik ViewData. Widok może następnei odczytać je z tego słownika.
+2) Przekazywanie mocno typowanych obiektów modelu - przekazywanie w kontrolerze w wywołaniu View jako parametru obiektu reprezentującego dane. Obiekt z danymi pozyskiwany jest z modelu.
+================================
+4. Jak mapowane są URLs na akcje kontrolerów?
+ODP:
+https://localhost:{PORT}/Kontroler/Akcja/Dane
+================================
+5. Jak ograniczać akcje kontrolera tak by były uruchamian tylko z użyciem wskazanych typów
+zapytań HTTP (np. ograniczenie do HTTP POST)?
+ODP: 
+Należy dodać przed metodą atrybut [HttpPost] (jeśli chcemy tylko POST) lub [HttpGet] (jeśli chcemy GET). Domyślnym jest [HttpGet].
+================================
+6. Gdzie zdefiniowana jest walidacja danych i jak realizowana jest w widokach i kontolerach?
+ODP:
+Walidacja definiowana jest deklaratywnie w klasie modelu.
+Realizowana jest:
+Od strony klienta przez jQuery
+Od strony serwera wywołując ModelState.IsValid
+
+Ani kontroler ani widok nie znają dokładnych zasad walidacji. Sprawdzają tylko ich spełnienie. Są one automatycznie stosowane na podstawie ich definicji w modelu.
