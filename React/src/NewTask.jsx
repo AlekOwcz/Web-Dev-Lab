@@ -9,9 +9,14 @@ export default function NewTask(props) {
 
         }
     }
+    const handleEnter = (event) => {
+        if (event.key === 'Enter'){
+            addNewTask()
+        }
+    }
     return(
     <>
-        <input type="text" value={newTask} onChange={(e) => setTask(e.target.value)}/>
+        <input type="text" value={newTask} onChange={(e) => setTask(e.target.value)} onKeyDown={handleEnter}/>
         <button onClick={addNewTask}>Add</button>
     </>
     )
